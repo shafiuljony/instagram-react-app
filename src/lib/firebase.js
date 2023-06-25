@@ -1,10 +1,12 @@
-import { initializeApp } from 'firebase/app';
-import { FieldValue } from 'firebase/firestore';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/analytics';
+import 'firebase/compat/auth';
+    
 
 // Here, you can import your seed file
-import { seedDatabase } from '../seed';
+// import { seedDatabase } from '../seed';
+
 
 const config = {
     apiKey: "AIzaSyASp6nj1ObRlB__K0h80pqplaDX3jmM2NQ",
@@ -15,9 +17,12 @@ const config = {
     appId: "1:42710354994:web:86c8cfdad1188a6bac002b"
 };
 
-const firebase = initializeApp(config);
+const firebaseApp = firebase.initializeApp(config);
+
+const db = firebaseApp.firestore();
+
+const FieldValue = db.FieldValue;
 
 // Here is where you can call the seed file (only ONCE)
-seedDatabase(firebase);
-
-export { firebase, FieldValue };
+// seedDatabase(db);
+export { db, FieldValue};
