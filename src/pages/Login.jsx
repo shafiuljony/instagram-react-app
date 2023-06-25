@@ -1,6 +1,5 @@
 import { useState,useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import FirebaseContext from "../context/firebase";
 import Iphonewithapp from "../../public/images/iphone-with-profile.jpg";
 import Logo from "../../public/images/logo.png";
 import * as ROUTES from "../constants/routes";
@@ -8,7 +7,6 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
 export default function Login(){
     const navigate = useNavigate();
-    const { firebase } = useContext(FirebaseContext);
 
     const [emailAddress,setEmailAddress] = useState('');
     const [password,setPassword] = useState('')
@@ -53,27 +51,29 @@ export default function Login(){
                             type="text"
                             placeholder="Email address"   
                             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2" 
-                            onChange={({ target }) => setEmailAddress(target.value)}    
+                            onChange={({ target }) => setEmailAddress(target.value)}
+                            value={emailAddress}    
                         />
                         <input 
                             aria-label="Enter your password address"
                             type="password"
                             placeholder="Password"   
                             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2" 
-                            onChange={({ target }) => setPassword(target.value)}    
+                            onChange={({ target }) => setPassword(target.value)}
+                            value={password}    
                         />
                         <button 
                             disabled={isInvalid}
                             type="submit"
                             className={`bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`}
                         >
-                            Login
+                            Log In
                         </button>
                     </form>        
                 </div>
                 <div className="flex justify-center items-center flex-col w-full bg-white border border-gray-primary rounded p-4">
                     <p className="text-sm">Don&apos;t have an account?{` `}
-                        <Link to='/signup' className="font-bold text-blue-medium">
+                        <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-medium">
                             Sign up
                         </Link>
                     </p>
