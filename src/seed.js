@@ -1,8 +1,8 @@
-// NOTE: replace 'Vooat4goYbcOcjCvDssXMoDuT8m1' with your Firebase auth user id (can be taken from Firebase)
+// NOTE: replace 'lyZjJDQ5QDen3DYuCbnTwbnmeAg2' with your Firebase auth user id (can be taken from Firebase)
 export function seedDatabase(db) {
   const users = [
     {
-      userId: 'Vooat4goYbcOcjCvDssXMoDuT8m1',
+      userId: 'lyZjJDQ5QDen3DYuCbnTwbnmeAg2',
       username: 'shafi',
       fullName: 'shafiul islam',
       emailAddress: 'shafiuljony12@gmail.com',
@@ -16,7 +16,7 @@ export function seedDatabase(db) {
       fullName: 'Raffaello Sanzio da Urbino',
       emailAddress: 'raphael@sanzio.com',
       following: [],
-      followers: ['Vooat4goYbcOcjCvDssXMoDuT8m1'],
+      followers: ['lyZjJDQ5QDen3DYuCbnTwbnmeAg2'],
       dateCreated: Date.now()
     },
     {
@@ -25,7 +25,7 @@ export function seedDatabase(db) {
       fullName: 'Salvador Dalí',
       emailAddress: 'salvador@dali.com',
       following: [],
-      followers: ['Vooat4goYbcOcjCvDssXMoDuT8m1'],
+      followers: ['lyZjJDQ5QDen3DYuCbnTwbnmeAg2'],
       dateCreated: Date.now()
     },
     {
@@ -34,7 +34,7 @@ export function seedDatabase(db) {
       fullName: 'George Orwell',
       emailAddress: 'george@orwell.com',
       following: [],
-      followers: ['Vooat4goYbcOcjCvDssXMoDuT8m1'],
+      followers: ['lyZjJDQ5QDen3DYuCbnTwbnmeAg2'],
       dateCreated: Date.now()
     }
   ];

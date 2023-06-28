@@ -1,7 +1,7 @@
 import { useState,useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Iphonewithapp from "../../public/images/iphone-with-profile.jpg";
-import Logo from "../../public/images/logo.png";
+import Iphonewithapp from "../assets/images/iphone-with-profile.jpg";
+import Logo from "../assets/images/logo.png";
 import * as ROUTES from "../constants/routes";
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
