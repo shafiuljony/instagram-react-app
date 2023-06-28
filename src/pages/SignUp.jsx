@@ -28,6 +28,7 @@ export default function SignUp(){
             try {
                 const { user } = await createUserWithEmailAndPassword(auth, emailAddress, password);
 
+                navigate(ROUTES.DASHBOARD);
 
                 //authentication
                 //-> emailAddress & password & username(displayName)
@@ -46,7 +47,6 @@ export default function SignUp(){
                     dateCreated: Date.now()
                 });
 
-                navigate(ROUTES.DASHBOARD);
 
             } catch (error) {
                 setFullName('');
@@ -62,7 +62,7 @@ export default function SignUp(){
 
     useEffect(() => {
         document.title = 'SignUp - Instagram';
-    },[])
+    },[navigate])
 
     return(
         <div className="container flex mx-auto max-w-screen-md items-center h-screen">
