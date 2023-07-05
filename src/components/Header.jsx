@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Logo from '../assets/images/logo.png';
 
-export default function Header() {
+export default function zHeader() {
     const {user} = useContext(UserContext);
     const auth = getAuth();
     console.log('user', user);
