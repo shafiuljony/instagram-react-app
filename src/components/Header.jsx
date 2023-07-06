@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Logo from '../assets/images/logo.png';
 
-export default function zHeader() {
+export default function Header() {
     const {user} = useContext(UserContext);
     const auth = getAuth();
     console.log('user', user);
@@ -18,7 +18,7 @@ export default function zHeader() {
                     <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
                         <h1 className="flex justify-center w-full ">
                             <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
-                                <img src={Logo}></img>
+                                <img src={Logo} alt="instagram-Logo"></img>
                             </Link>
                         </h1>
                     </div>
