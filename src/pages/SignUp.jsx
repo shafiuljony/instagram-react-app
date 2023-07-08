@@ -4,13 +4,13 @@ import Iphonewithapp from "../assets/images/iphone-with-profile.jpg";
 import Logo from "../assets/images/logo.png";
 import * as ROUTES from "../constants/routes";
 import {getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { doseUsernameExist } from "../services/Firebase";
+import { doseusernameExist } from "../services/Firebase";
 import { db } from "../lib/firebase";
 
 export default function SignUp(){
     const navigate = useNavigate();
 
-    const [userName,setUserName] = useState('');
+    const [username,setusername] = useState('');
     const [fullName,setFullName] = useState('');
     const [emailAddress,setEmailAddress] = useState('');
     const [password,setPassword] = useState('');
@@ -23,7 +23,7 @@ export default function SignUp(){
         event.preventDefault();
 
         const auth = getAuth();
-        const usernameExists = await doseUsernameExist(userName)
+        const usernameExists = await doseusernameExist(username)
         if(!usernameExists.length){
             try {
                 const { user } = await createUserWithEmailAndPassword(auth, emailAddress, password);
@@ -33,14 +33,14 @@ export default function SignUp(){
                 //authentication
                 //-> emailAddress & password & username(displayName)
                 await updateProfile(user, {
-                    displayName: userName
+                    displayName: username
                 })
 
 
                 //firebase user collection ( create a document)
                 await db.collection('users').add({
                     userId: user.uid,
-                    userName: userName.toLowerCase(),
+                    username: username.toLowerCase(),
                     fullName,
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
@@ -82,8 +82,8 @@ export default function SignUp(){
                             type="text"
                             placeholder="User name"   
                             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2" 
-                            onChange={({ target }) => setUserName(target.value)}    
-                            value={userName}
+                            onChange={({ target }) => setusername(target.value)}    
+                            value={username}
                         />
                         <input 
                             aria-label="Enter your full name"

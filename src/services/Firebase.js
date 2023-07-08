@@ -1,7 +1,7 @@
 import { db, FieldValue } from '../lib/firebase';
 
-export async function doseUsernameExist(userName){
-    const result = await db.collection('users').where('userName', '==', userName).get();
+export async function doseusernameExist(username){
+    const result = await db.collection('users').where('username', '==', username).get();
 
     return result.docs.map((user) => user.data().length > 0 );
     
