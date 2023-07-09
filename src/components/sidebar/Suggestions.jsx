@@ -7,7 +7,7 @@ import SuggestedProfile from './SuggestedProfile';
 
 
 
-export default function Suggestions({userId, following}) {
+export default function Suggestions({userId, following, loggedInUserDocId}) {
     const [ profiles, setProfiles ] = useState(null);
 
     // go and get the suggested profiles
@@ -17,10 +17,10 @@ export default function Suggestions({userId, following}) {
             const response = await getSuggestedProfiles(userId, following);
             setProfiles(response);
         }
+        console.log('profiles', profiles);
         if (userId) {
             suggestedProfiles();
         }
-        console.log('profiles', profiles);
     }, [userId]);
     // hint: use the firebase service (call using userId)
     // getSuggestedProfiles
@@ -37,10 +37,11 @@ export default function Suggestions({userId, following}) {
                     {profiles.map((profile) => (
                         <SuggestedProfile
                             key={profile.docId}
-                            userDocId={profile.docId}
+                            profileDocId={profile.docId}
                             username={profile.username}
                             profileId={profile.userId}
                             userId={userId}
+                            loggedInUserDocId={loggedInUserDocId}
                         />
                     ))}
                 </div>
@@ -50,5 +51,6 @@ export default function Suggestions({userId, following}) {
 
 Suggestions.propTypes = {
     userId: PropTypes.string,
+    loggedInUserDocId: PropTypes.string,
     following: PropTypes.array
 }

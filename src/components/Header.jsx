@@ -10,7 +10,7 @@ import Logo from '../assets/images/logo.png';
 export default function Header() {
     const {user} = useContext(UserContext);
     const auth = getAuth();
-    console.log('user', user);
+    // console.log('user', user); why its null in fast rendering??
     return (
         <header className="h-16 bg-white border-b border-gray-primary mb-8">
             <div className="container mx-auto max-w-screen-lg h-full">
