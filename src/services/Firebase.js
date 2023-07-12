@@ -26,10 +26,15 @@ export async function getSuggestedProfiles(userId, following){
 }
 
 export async function updateLoggedInUserFollowing(loggedInUserDocId, profileId, isFollowingProfile){
-    return db.collection('users').doc(loggedInUserDocId).update({
+    return db
+    .collection('users')
+    .doc(loggedInUserDocId)
+    .update({
         following: isFollowingProfile ? FieldValue.arrayRemove(profileId) : FieldValue.arrayUnion(profileId)
     });
 }
+
+
 export async function updateFollowedUserFollowers(profileDocId, loggedInUserDocId, isFollowingProfile){
     return db.collection('users').doc(profileDocId).update({
         following: isFollowingProfile ? FieldValue.arrayRemove(loggedInUserDocId) : FieldValue.arrayUnion(loggedInUserDocId)

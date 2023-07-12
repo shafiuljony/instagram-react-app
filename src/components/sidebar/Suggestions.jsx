@@ -17,10 +17,13 @@ export default function Suggestions({userId, following, loggedInUserDocId}) {
             const response = await getSuggestedProfiles(userId, following);
             setProfiles(response);
         }
-        console.log('profiles', profiles);
+
+
         if (userId) {
             suggestedProfiles();
         }
+
+        // console.log('profiles', profiles);
     }, [userId]);
     // hint: use the firebase service (call using userId)
     // getSuggestedProfiles
@@ -28,7 +31,7 @@ export default function Suggestions({userId, following, loggedInUserDocId}) {
     //store it in state
     //go ahead and render (wait on the profiles as in 'skeleton')
     return !profiles ? (
-        <Skeleton count={10} height={150} className="mt-5" />) : profiles.length > 0 ? (
+        <Skeleton count={10} height={150} className="mt-5" /> ) : profiles.length > 0 ? (
             <div className="rounded flex flex-col">
                 <div className="text-sm flex items-center align-items justify-between mb-2">
                     <p className='font-bold text-gray-base'>Suggestions for you</p>
