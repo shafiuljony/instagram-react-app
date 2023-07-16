@@ -5,7 +5,7 @@ import UserContext from "../../context/user";
 
 export default function AddComment({docId, comments, setComments, commentInput}){
     const [comment, setComment] = useState('');
-    const  { firebase, FieldValue } = useContext(FirebaseContext);
+    const  { db, FieldValue } = useContext(FirebaseContext);
     const { user: { displayName } } = useContext(UserContext); //destructuring user object from UserContext
 
     const handleSubmitComment = (event) => {
@@ -19,7 +19,12 @@ export default function AddComment({docId, comments, setComments, commentInput})
         //concatenate the new comment with the previous comments
         //then we have a new array with the new comment at the top of the array
 
-        return null;
+        return db
+            .collection('photos')
+            .doc(docId)
+            .update({
+                comments: FieldValue.arrayUnion({displayName, comment})
+            });
     }
 
 

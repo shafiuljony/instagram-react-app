@@ -4,6 +4,8 @@ import { Suspense, lazy } from 'react'
 import useAuthListener from './hooks/use-auth-listener';
 import UserContext from './context/user';
 
+import ProtectedRoute from './helpers/Protected.route';
+
 const Login = lazy(() => import("./pages/Login"))
 const SignUp = lazy(() => import("./pages/SignUp"))
 const NotFound = lazy(() => import("./pages/Not-found"))
@@ -24,11 +26,7 @@ function App() {
     {
       path: ROUTES.NOT_FOUND,
       errorElement: <NotFound />
-    }, 
-    {
-      path: ROUTES.DASHBOARD,
-      element: <Dashboard />
-    }  
+    },  
       
   ]
   )
@@ -37,6 +35,9 @@ function App() {
     <UserContext.Provider value={{ user }}>
       <Suspense fallback={<p>Loading...</p>}>
         <RouterProvider router={router} />
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
       </Suspense>
     </UserContext.Provider>
   )
