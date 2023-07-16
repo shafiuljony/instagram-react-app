@@ -19,6 +19,7 @@ const firebaseApp = firebase.initializeApp(config);
 
 const db = firebaseApp.firestore();
 
+// Access FieldValue using firebase.firestore.FieldValue
 const FieldValue = firebase.firestore.FieldValue;
 
 // Here is where you can call the seed file (only ONCE)
