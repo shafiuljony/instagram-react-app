@@ -6,12 +6,12 @@ export default function usePhotos() {
 
     const [photos, setPhotos] = useState(null);
 
-    const {
-        user: { uid: userId = '' }
-    } = useContext(UserContext);
+    // const {
+    //     user: { uid: userId = '' }
+    // } = useContext(UserContext);
 
-    // const { user } = useContext(UserContext);
-    // const userId = user ? user.uid :'';
+    const { user } = useContext(UserContext);
+    const userId = user ? user.uid :'';
 
 // console.log('userId', userId);
     useEffect(() => {

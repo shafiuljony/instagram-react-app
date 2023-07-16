@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fill:(theme) => ({
+      red: theme('colors.red.primary')
+    }),
     extend: {},
     colors: {
       white: '#ffffff',
