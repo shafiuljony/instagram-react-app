@@ -7,7 +7,7 @@ export default function Profile() {
     const { username } = useParams();
     const navigate = useNavigate()
 
-    const [user, setUser] = useState(second)
+    const [user, setUser] = useState(null)
 
     const [userExists, setUserExists] = useState(false);
 
