@@ -6,6 +6,7 @@ import useAuthListener from '../hooks/use-auth-listener';
 export default function ProtectedRoute() {
 
     const {auth} = useAuthListener();
+
     location = useLocation();
 
     return (
