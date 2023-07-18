@@ -37,7 +37,7 @@ export default function UserProfile({ user }) {
                 setFollowerCount={dispath}
             />
             <PhotosCollection  photos={photosCollection} />
-            <p>Hello {user.username}</p>
+            {/* <p>{user.username}</p> */}
         </div>
     )
 }
