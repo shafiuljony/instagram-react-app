@@ -11,7 +11,7 @@ export default function useAuthListener() {
         const auth = getAuth();
         const listener = onAuthStateChanged(auth ,(authUser) => {
             if(authUser) {
-                console.log(authUser, 'authUser');
+                // console.log(authUser, 'authUser');
                 //we have a user...therefore we can store the user in localstorage
                 localStorage.setItem('authyUser', JSON.stringify(authUser));
                 setUser(authUser);

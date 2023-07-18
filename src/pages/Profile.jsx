@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import { getUserByUsername } from "../services/Firebase";
 import * as ROUTES from "../constants/routes";
-
+import Header from "../components/Header";
+import UserProfile from "../components/profile/UserProfile";
 
 export default function Profile() {
     const { username } = useParams();
@@ -18,7 +19,7 @@ export default function Profile() {
     useEffect(()=>{
         async function checkUserExists() {
             const user = await getUserByUsername(username);
-            console.log(user, 'user');
+            // console.log(user, 'user');
             if(user.length > 0){
                 setUser(user[0]);
                 setUserExists(true);
@@ -27,14 +28,14 @@ export default function Profile() {
             }
         }
         checkUserExists();
-        // console.log(user, 'user');
     },[username, navigate])
 
 
     return userExists ? (
         <div className="bg-gray-background">
+            <Header />
             <div className="mx-auto max-w-screen-lg">
-                this is {user.fullName} &apos;s profile
+                <UserProfile user={user} />
             </div>
         </div>
     ): null;

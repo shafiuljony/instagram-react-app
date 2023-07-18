@@ -6,7 +6,11 @@ import UserContext from "../../context/user";
 export default function AddComment({docId, comments, setComments, commentInput}){
     const [comment, setComment] = useState('');
     const  { db, FieldValue } = useContext(FirebaseContext);
-    const { user: { displayName } } = useContext(UserContext); //destructuring user object from UserContext
+    const { user: { displayName } } = useContext(UserContext);//destructuring user object from UserContext
+
+    // const { user } = useContext(UserContext);
+    // const displayName = user?.displayName;
+
 
     const handleSubmitComment = (event) => {
         event.preventDefault();

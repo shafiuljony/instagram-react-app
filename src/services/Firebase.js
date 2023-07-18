@@ -8,7 +8,7 @@ export async function doseusernameExist(username){
 }
 
 export async function getUserByUsername(username){
-    const result = await db.collection('users').where('userName', '==', username).get();
+    const result = await db.collection('users').where('username', '==', username).get();
 
     return result.docs.map((item) => ({
         ...item.data(),
@@ -81,4 +81,28 @@ export async function getPhotos(userId, following){
     );
 
     return photosWithUserDetails;
+}
+
+// export async function getUserIdByUsername(username){
+//     const result = await db.collection('users').where('username', '==', username).get();
+
+//     const [{ userId = null}] = result.docs.map((item) => ({
+//         ...item.data(),
+//     }));
+
+//     return userId;
+// }
+
+export async function getUserPhotosByUsername(username){
+    const [user] = await getUserByUsername(username);
+
+    const result = await db
+    .collection('photos')
+    .where('userId', '==', user.userId)
+    .get();
+
+    return result.docs.map((item)=>({
+        ...item.data(),
+        docId: item.id
+    }));
 }
