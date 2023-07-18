@@ -6,13 +6,14 @@ export async function doseusernameExist(username){
     return result.docs.map((user) => user.data().length > 0 );
     
 }
+
 export async function getUserByUsername(username){
-    const result = await db.collection('users').where('username', '==', username).get();
+    const result = await db.collection('users').where('userName', '==', username).get();
 
     return result.docs.map((item) => ({
         ...item.data(),
         docId: item.id
-    }))
+    }))  
 }
 
 export async function getUserByUserId(userId){
