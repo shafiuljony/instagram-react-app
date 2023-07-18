@@ -40,3 +40,6 @@ export default function Profile() {
         </div>
     ): null;
 }
+
+
+//user?.username is not working in this case

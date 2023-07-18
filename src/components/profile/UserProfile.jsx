@@ -9,7 +9,6 @@ import PhotosCollection from './PhotosCollection';
 
 export default function UserProfile({ user }) {
 
-
     const reducer = (state, newState) => ({ ...state, ...newState });
 
     const initialState = {
@@ -24,14 +23,19 @@ export default function UserProfile({ user }) {
             const photos = getUserPhotosByUsername(user.username);
 
             // console.log('photos', photos);
-            dispath({ profile: user, photosCollection: photos, followerCount: user.followers.length });
+            dispath({ profile: user, photosCollection: photos, followerCount: user.followers });
         }
         getProfileInfoAndPhotos();
     },[user.username])
 
     return (
         <div>
-            <Header />
+            <Header 
+                photosCount={ photosCollection ? photosCollection.length : 0 }
+                profile={profile}
+                followerCount={followerCount}
+                setFollowerCount={dispath}
+            />
             <PhotosCollection  photos={photosCollection} />
             <p>Hello {user.username}</p>
         </div>
