@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from "../../hooks/use-user";
-import { isUserFollowingProfile } from "../../services/Firebase";
+import { isUserFollowingProfile, toggleFollow } from "../../services/Firebase";
 
 
 export default function Header({ photosCount, followerCount, setFollowerCount, profile: {
@@ -19,9 +19,10 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
     const activeBtnFollow = user.username && user.username !== profileUsername;
 
     const handleToggleFollow = async () => {
-        setIsFollowingProfile((prevState) => !prevState);
-        setFollowerCount((prevCount) => (isFollowingProfile ? prevCount - 1 : prevCount + 1));
-        // console.log('isFollowingProfile', isFollowingProfile);
+        setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
+        setFollowerCount({ followerCount: isFollowingProfile ? followerCount - 1 :  followerCount + 1});
+
+        await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
     };
     
 
@@ -81,6 +82,11 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
                             </p>
                         </>
                     )}
+                </div>
+                <div className="container mt-4">
+                    <p className="font-medium">
+                        {!fullName ? <Skeleton count={1} height={24} /> : fullName}
+                    </p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import { getUserPhotosByUsername } from '../../services/Firebase';
@@ -21,14 +21,12 @@ export default function UserProfile({ user }) {
     useEffect(()=> {
         async function getProfileInfoAndPhotos() {
 
-            // console.log('user',user);
-            const photos = getUserPhotosByUsername(user.username);
+            const photos = await getUserPhotosByUsername(user.username);
 
-            // console.log('photos', photos);
             dispath({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
         getProfileInfoAndPhotos();
-    },[user.username])
+    },[user])
 
     return (
         <div>
