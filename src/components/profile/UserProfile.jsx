@@ -20,10 +20,12 @@ export default function UserProfile({ user }) {
 
     useEffect(()=> {
         async function getProfileInfoAndPhotos() {
+
+            // console.log('user',user);
             const photos = getUserPhotosByUsername(user.username);
 
             // console.log('photos', photos);
-            dispath({ profile: user, photosCollection: photos, followerCount: user.followers });
+            dispath({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
         getProfileInfoAndPhotos();
     },[user.username])

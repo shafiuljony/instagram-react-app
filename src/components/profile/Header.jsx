@@ -18,12 +18,17 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
     const activeBtnFollow = user.username && user.username !== profileUsername;
 
-    const handleToggleFollow = async () => 1;
+    const handleToggleFollow = async () => {
+        setIsFollowingProfile((prevState) => !prevState);
+        setFollowerCount((prevCount) => (isFollowingProfile ? prevCount - 1 : prevCount + 1));
+        // console.log('isFollowingProfile', isFollowingProfile);
+    };
+    
 
     useEffect(()=> {
         const isLoggedUserFollowingProfile = async () => {
             const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
-            setIsFollowingProfile(isFollowing);
+            setIsFollowingProfile(!!isFollowing);
         }
 
         if(user.username && profileUserId){
@@ -44,11 +49,38 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
                     </p>
                     
                     {activeBtnFollow && (
-                        <button className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8" type="button" onClick={() => {handleToggleFollow}}>
+                        <button 
+                            className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8" type="button" 
+                            onClick={handleToggleFollow}
+                            onKeyDown={(event) => {
+                                if(event.key === 'Enter'){
+                                    handleToggleFollow();
+                                }
+                            }}                    
+                        >
                             {isFollowingProfile ? 'Unfollow' : 'Follow'}
                         </button>
                     )}
                     {/* {user.username !== profileUsername ? () => {} : () => {}} */}
+                </div>
+                <div className="container flex mt-4">
+                    {followerCount === undefined || following === undefined ? (
+                        <Skeleton count={1} width={677} height={24} />
+                    ):(
+                        <>
+                            <p className="mr-10">
+                                <span className="font-bold">{photosCount}</span> photos
+                            </p>
+                            <p className="mr-10">
+                                <span className="font-bold">{followerCount}</span> 
+                                {` `}
+                                {followerCount === 1 ? 'follower' : 'followers'}
+                            </p>
+                            <p className="mr-10">
+                                <span className="font-bold">{following.length}</span> following
+                            </p>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
