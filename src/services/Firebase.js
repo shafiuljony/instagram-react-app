@@ -3,7 +3,7 @@ import { db, FieldValue } from '../lib/firebase';
 export async function doseusernameExist(username){
     const result = await db.collection('users').where('username', '==', username).get();
 
-    return result.docs.map((user) => user.data().length > 0 );
+    return result.docs.map((user) => user?.data().length > 0 );
     
 }
 
@@ -83,22 +83,12 @@ export async function getPhotos(userId, following){
     return photosWithUserDetails;
 }
 
-// export async function getUserIdByUsername(username){
-//     const result = await db.collection('users').where('username', '==', username).get();
-
-//     const [{ userId = null}] = result.docs.map((item) => ({
-//         ...item.data(),
-//     }));
-
-//     return userId;
-// }
-
 export async function getUserPhotosByUsername(username){
     const [user] = await getUserByUsername(username);
 
     const result = await db
     .collection('photos')
-    .where('userId', '==', user.userId)
+    .where('userId', '==', user?.userId)
     .get();
 
     return result.docs.map((item)=>({

@@ -28,15 +28,14 @@ export default function SignUp(){
             try {
                 const { user } = await createUserWithEmailAndPassword(auth, emailAddress, password);
 
-                navigate(ROUTES.DASHBOARD);
-
+                
                 //authentication
                 //-> emailAddress & password & username(displayName)
                 await updateProfile(user, {
                     displayName: username
                 })
-
-
+                
+                
                 //firebase user collection ( create a document)
                 await db.collection('users').add({
                     userId: user.uid,
@@ -44,9 +43,11 @@ export default function SignUp(){
                     fullName,
                     emailAddress: emailAddress.toLowerCase(),
                     following: [],
+                    followers: [],
                     dateCreated: Date.now()
                 });
-
+                
+                navigate(ROUTES.DASHBOARD);
 
             } catch (error) {
                 setFullName('');
@@ -55,6 +56,7 @@ export default function SignUp(){
                 setError(error.message);
             }
         }else {
+            setusername('');
             setError('That user Name is already exists');
         }    
 

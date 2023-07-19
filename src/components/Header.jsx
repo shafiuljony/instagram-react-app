@@ -6,9 +6,14 @@ import * as ROUTES from '../constants/routes';
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Logo from '../assets/images/logo.png';
+import useUser from "../hooks/use-user";
 
 export default function Header() {
-    const {user} = useContext(UserContext);
+
+    const {user: loggedInUser } = useContext(UserContext);
+
+    const {user} = useUser(loggedInUser?.uid);
+
     const auth = getAuth();
     // console.log('user', user); why its null in fast rendering??
     return (
@@ -23,7 +28,7 @@ export default function Header() {
                         </h1>
                     </div>
                     <div className="text-gray-700 text-center flex items-center align-items gap-8">
-                        {user ? (
+                        {user.username ? (
                             <>
                                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -44,8 +49,8 @@ export default function Header() {
 
                                 </button>
                                 <div className="flex items-center text-center space-x-4">
-                                    <Link to={'/p/${user.dispalyName}'}>
-                                        <img src={`/images/avatars/${user.displayName}.jpg`} alt={`${user.displayName} profile picture`} className="rounded-full h-8 w-8 flex"/>
+                                    <Link to={'/p/${user?.username}'}>
+                                        <img src={`/images/avatars/${user?.username}.jpg`} alt={`${user?.username} profile picture`} className="rounded-full h-8 w-8 flex"/>
                                     </Link>
                                 </div>
                             </>

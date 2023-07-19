@@ -1,47 +1,54 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import useUser from "../../hooks/use-user";
 import { isUserFollowingProfile, toggleFollow } from "../../services/Firebase";
+import userContext from "../../context/user";
 
 
 export default function Header({ photosCount, followerCount, setFollowerCount, profile: {
     docId: profileDocId,
     userId: profileUserId,
     fullName,
-    following = [],
+    following,
     username: profileUsername
 }}){
 
-    const { user } = useUser();
+    const { user: loggedInUser } = useContext(userContext);
+
+    const { user } = useUser(loggedInUser?.uid);
 
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
-    const activeBtnFollow = user.username && user.username !== profileUsername;
+    const activeBtnFollow = user?.username && user?.username !== profileUsername;
 
     const handleToggleFollow = async () => {
         setIsFollowingProfile((isFollowingProfile) => !isFollowingProfile);
         setFollowerCount({ followerCount: isFollowingProfile ? followerCount - 1 :  followerCount + 1});
 
-        await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
+        await toggleFollow(isFollowingProfile, user?.docId, profileDocId, profileUserId, user?.userId);
     };
     
 
     useEffect(()=> {
         const isLoggedUserFollowingProfile = async () => {
-            const isFollowing = await isUserFollowingProfile(user.username, profileUserId);
+            const isFollowing = await isUserFollowingProfile(user?.username, profileUserId);
             setIsFollowingProfile(!!isFollowing);
         }
 
-        if(user.username && profileUserId){
+        if(user?.username && profileUserId){
             isLoggedUserFollowingProfile();
         }
-    },[user.username, profileUserId])
+    },[user?.username, profileUserId])
 
 
     return (
         <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
             <div className="container flex justify-center">
-                <img className="rounded-full h-40 w-40 flex" alt={`${profileUsername} profile`} src={`/images/avatars/${profileUsername}.jpg`} />
+                {profileUsername ? (
+                    <img className="rounded-full h-40 w-40 flex" alt={`${profileUsername} profile`} src={`/images/avatars/${profileUsername}.jpg`} />
+                ) : (
+                    <img className="rounded-full h-40 w-40 flex" alt={`${profileUsername} profile`} src={`/images/avatars/${profileUsername}.jpg`} />
+                )}
             </div>
             <div className="flex items-center justify-center flex-col col-span-2">
                 <div className="container flex items-center">
@@ -62,7 +69,6 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
                             {isFollowingProfile ? 'Unfollow' : 'Follow'}
                         </button>
                     )}
-                    {/* {user.username !== profileUsername ? () => {} : () => {}} */}
                 </div>
                 <div className="container flex mt-4">
                     {followerCount === undefined || following === undefined ? (
