@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "date-fns": "^2.30.0",
+    "esm": "^3.2.25",
     "firebase": "^9.23.0",
+    "framer-motion": "^10.12.22",
+    "loadtest": "^5.2.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

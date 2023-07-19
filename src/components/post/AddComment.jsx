@@ -15,7 +15,7 @@ export default function AddComment({docId, comments, setComments, commentInput})
     const handleSubmitComment = (event) => {
         event.preventDefault();
 
-        setComments([{displayName, comment}, ...comments]);
+        setComments([...comments, {displayName, comment}]);
         setComment('');
 
         //give me a new array with the new comment added to the top of the array

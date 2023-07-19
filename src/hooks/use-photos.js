@@ -19,6 +19,7 @@ export default function usePhotos() {
 
             //example: [2,1,5] <- 2 being raphel
             const [{following}] = await getUserByUserId(userId)
+            // console.log('following', following);
             let followedUserPhotos = [];
 
             // does the user actually follow people?
