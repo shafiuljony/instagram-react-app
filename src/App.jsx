@@ -24,11 +24,11 @@ function App() {
               <Route path={ROUTES.LOGIN} element={<Login />} />
               <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
               <Route path={ROUTES.NOT_FOUND} element={<NotFound />}  />
-              <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+              {/* <Route path={ROUTES.DASHBOARD} element={<Dashboard />} /> */}
               <Route path={ROUTES.PROFILE} element={<Profile />} />
-              {/* <Route element={<ProtectedRoute/>}>
-                <Route path={ROUTES.DASHBOARD} element={<Dashboard />} /> 
-              </Route> */}
+              <Route  element={<ProtectedRoute user={user} />}>
+                <Route  path={ROUTES.DASHBOARD} element={<Dashboard  />} /> 
+              </Route>
             </Routes>
           </Suspense>
         </BrowserRouter>

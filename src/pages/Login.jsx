@@ -1,12 +1,18 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Iphonewithapp from "../assets/images/iphone-with-profile.jpg";
 import Logo from "../assets/images/logo.png";
 import * as ROUTES from "../constants/routes";
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
 export default function Login(){
+
+
     const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const from  = location.state?.from?.pathname || '/';
 
     const [emailAddress,setEmailAddress] = useState('');
     const [password,setPassword] = useState('')
@@ -19,7 +25,7 @@ export default function Login(){
         const auth = getAuth();
         try{
             await signInWithEmailAndPassword(auth,emailAddress, password);
-            navigate(ROUTES.DASHBOARD)
+            navigate(from, {replace: true })
         } catch (error){
             setEmailAddress('');
             setPassword('');

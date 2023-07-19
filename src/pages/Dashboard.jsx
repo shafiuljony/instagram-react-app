@@ -8,7 +8,11 @@ import LoggedInUserContext from "../context/logged-in-user";
 
 export default function Dashboard({user: loggedInUser}){
 
-    const {user } =  useUser(loggedInUser.uid)
+    // console.log('loggedInUser',loggedInUser);
+
+    const {user } =  useUser(loggedInUser?.uid || null)
+
+    // console.log('user',user);
 
 
     useEffect(() => {
@@ -29,7 +33,7 @@ export default function Dashboard({user: loggedInUser}){
 }
 
 Dashboard.propTypes = {
-    user: PropTypes.object.isRequired
+    user: PropTypes.object
 }
 
 

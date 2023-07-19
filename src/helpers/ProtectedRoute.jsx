@@ -1,38 +1,16 @@
 import PropTypes from 'prop-types';
 import { useLocation,Navigate, Outlet } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import useAuthListener from '../hooks/use-auth-listener';
+import { cloneElement } from 'react';
 
-export default function ProtectedRoute() {
 
-    const {auth} = useAuthListener();
+export default function ProtectedRoute({user}) {
 
-    location = useLocation();
+    // console.log('user',user);
 
-    return (
-        // <Route
-        //     {...rest}
-        //     render={({ location }) => {
-        //         if (user) {
-        //             return children;
-        //         }
+   const location = useLocation();
 
-        //         if (!user) {
-        //             return (
-        //                 <Navigate
-        //                     to={{
-        //                         pathname: ROUTES.LOGIN,
-        //                         state: { from: location }
-        //                     }}
-        //                 />
-        //             );
-        //         }
-
-        //         return null;
-        //     }}
-        // />
-        auth?.user ? <Outlet /> : <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace/>
-    );
+    return user ? cloneElement(<Outlet />,{user}) : <Navigate to={ROUTES.LOGIN} state={{ from: location }} replace/>;
 }
 
 ProtectedRoute.propTypes = {
