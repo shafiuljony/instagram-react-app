@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Iphonewithapp from "../assets/images/iphone-with-profile.jpg";
 import Logo from "../assets/images/logo.png";
 import * as ROUTES from "../constants/routes";
-import {getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import {getAuth, createUserWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
 import { doseusernameExist } from "../services/Firebase";
 import { db } from "../lib/firebase";
 
@@ -16,6 +16,8 @@ export default function SignUp(){
     const [password,setPassword] = useState('');
 
     const [error, setError] = useState("");
+
+    const auth = getAuth();
 
     const isInvalid = password === '' || emailAddress === '';
 
@@ -115,6 +117,12 @@ export default function SignUp(){
                             disabled={isInvalid}
                             type="submit"
                             className={`bg-blue-medium text-white w-full rounded h-8 font-bold ${isInvalid && 'opacity-50'}`}
+                            onKeyDown={(event)=> {
+                                if(event.key === 'Enter') {
+                                    signOut(auth);
+                                    navigate(ROUTES.LOGIN);
+                                }
+                            }}
                         >
                             Sign Up
                         </button>

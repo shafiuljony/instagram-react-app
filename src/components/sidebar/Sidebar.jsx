@@ -1,4 +1,3 @@
-import useUser from "../../hooks/use-user" ;
 import User from "./User";
 import Suggestions from "./Suggestions";
 import { useContext } from "react";

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { updateFollowedUserFollowers, updateLoggedInUserFollowing } from "../../services/Firebase";
+import { DEFAULT_IMAGE_PATH } from "../../constants/paths";
 
 
 export default function SuggestedProfile({ profileDocId, username, profileId, userId, loggedInUserDocId }) {
@@ -23,7 +24,10 @@ export default function SuggestedProfile({ profileDocId, username, profileId, us
             <div className="flex items-center justify-between">
                 <img 
                     className="rounded-full w-8 flex mr-3" src={`/images/avatars/${username}.jpg`} 
-                    alt="" 
+                    alt=""
+                    onError={(e) => {
+                        e.target.src = DEFAULT_IMAGE_PATH;
+                      }} 
                 />
                 <Link to={`/p/${username}`}>
                     <p className="font-bold text-sm">{username}</p>
