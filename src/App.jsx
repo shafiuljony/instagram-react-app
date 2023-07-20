@@ -3,7 +3,7 @@ import * as ROUTES from "./constants/routes";
 import { Suspense, lazy } from 'react'
 import useAuthListener from './hooks/use-auth-listener';
 import UserContext from './context/user';
-import Loader  from './components/Loader';
+// import { BeatLoader } from 'react-spinners';
 
 import ProtectedRoute from './helpers/ProtectedRoute';
 
@@ -19,7 +19,7 @@ function App() {
   return (
     <UserContext.Provider value={{ user }}>
         <BrowserRouter>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={<p>loading...</p>}>
             <Routes>
               <Route path={ROUTES.LOGIN} element={<Login />} />
               <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
