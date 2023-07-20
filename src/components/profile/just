@@ -1,0 +1,13 @@
+
+            onError={(e) => {
+              e.target.src = DEFAULT_IMAGE_PATH;
+            }}
+
+             onKeyDown={(event)=> {
+                                    if(event.key === 'Enter') {
+                                        signOut(auth);
+                                        navigate(ROUTES.LOGIN);
+                                    }
+                                }}
+
+                                
