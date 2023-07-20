@@ -9,6 +9,7 @@ import 'firebase/compat/firestore';
 
 const config = {
     //my firebase config
+    
 };
 
 const firebaseApp = firebase.initializeApp(config);
