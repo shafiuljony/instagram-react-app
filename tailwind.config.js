@@ -8,7 +8,11 @@ export default {
     fill:(theme) => ({
       red: theme('colors.red.primary')
     }),
-    extend: {},
+    extend: {
+      animation: {
+        fade: 'fadeOut 5s ease-in-out',
+      },
+    },
     colors: {
       white: '#ffffff',
       blue:{

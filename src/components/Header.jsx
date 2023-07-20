@@ -3,7 +3,7 @@ import { useContext } from "react"
 import UserContext from "../context/user";
 
 import * as ROUTES from '../constants/routes';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Logo from '../assets/images/logo.png';
 import useUser from "../hooks/use-user";
@@ -14,6 +14,8 @@ export default function Header() {
 
     const {user} = useUser(loggedInUser?.uid);
 
+    const navigate = useNavigate();
+
     const auth = getAuth();
     // console.log('user', user); why its null in fast rendering??
     return (
@@ -21,7 +23,7 @@ export default function Header() {
             <div className="container mx-auto max-w-screen-lg h-full">
                 <div className="flex justify-between h-full">
                     <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
-                        <h1 className="flex justify-center w-full ">
+                        <h1 className="flex justify-center w-full animate-fade">
                             <Link to={ROUTES.DASHBOARD} aria-label="Instagram logo">
                                 <img src={Logo} alt="instagram-Logo"></img>
                             </Link>
@@ -37,10 +39,14 @@ export default function Header() {
                                 </Link>
                                 <button type="button"
                                 title="Sign Out"
-                                onClick={() => signOut(auth)}
+                                onClick={() => {
+                                    signOut(auth); 
+                                    navigate(ROUTES.LOGIN);
+                                }}
                                 onKeyDown={(event)=> {
                                     if(event.key === 'Enter') {
                                         signOut(auth);
+                                        navigate(ROUTES.LOGIN);
                                     }
                                 }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

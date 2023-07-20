@@ -71,7 +71,7 @@ export default function Header({ photosCount, followerCount, setFollowerCount, p
                     )}
                 </div>
                 <div className="container flex mt-4">
-                    {followerCount === undefined || following === undefined ? (
+                    {!followerCount || !following === undefined ? (
                         <Skeleton count={1} width={677} height={24} />
                     ):(
                         <>

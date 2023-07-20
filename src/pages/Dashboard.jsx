@@ -10,7 +10,7 @@ export default function Dashboard({user: loggedInUser}){
 
     // console.log('loggedInUser',loggedInUser);
 
-    const {user } =  useUser(loggedInUser?.uid || null)
+    const {user } =  useUser(loggedInUser?.uid)
 
     // console.log('user',user);
 
@@ -18,6 +18,8 @@ export default function Dashboard({user: loggedInUser}){
     useEffect(() => {
         document.title = "Instagram"
     },[]);
+
+    
 
     return(
         <LoggedInUserContext.Provider value={{user}}>

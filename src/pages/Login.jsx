@@ -7,11 +7,8 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
 export default function Login(){
 
-
     const navigate = useNavigate();
-
     const location = useLocation();
-
     const from  = location.state?.from?.pathname || '/';
 
     const [emailAddress,setEmailAddress] = useState('');
@@ -20,7 +17,7 @@ export default function Login(){
     const [error, setError] = useState("")
     const isInvalid = password === '' || emailAddress === '';
 
-    const handleLogin = async(event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
         const auth = getAuth();
         try{
