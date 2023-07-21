@@ -44,6 +44,10 @@ export function seedDatabase(db) {
     db.collection('users').add(users[k]);
   }
 
+
+
+ 
+
   // eslint-disable-next-line prefer-const
   for (let i = 1; i <= 5; ++i) {
     db

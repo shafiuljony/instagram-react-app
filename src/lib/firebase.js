@@ -1,4 +1,3 @@
-import { getAuth } from 'firebase/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
     
@@ -9,17 +8,21 @@ import 'firebase/compat/firestore';
 
 const config = {
     //my firebase config
+    apiKey: "AIzaSyASp6nj1ObRlB__K0h80pqplaDX3jmM2NQ",
+    authDomain: "instagram-react-app-9aea6.firebaseapp.com",
+    projectId: "instagram-react-app-9aea6",
+    storageBucket: "instagram-react-app-9aea6.appspot.com",
+    messagingSenderId: "42710354994",
+    appId: "1:42710354994:web:86c8cfdad1188a6bac002b"
 };
 
 const firebaseApp = firebase.initializeApp(config);
 
 const db = firebaseApp.firestore();
 
-const auth = getAuth(firebaseApp)
-
 // Access FieldValue using firebase.firestore.FieldValue
 const FieldValue = firebase.firestore.FieldValue;
 
 // Here is where you can call the seed file (only ONCE)
 // seedDatabase(db);
-export { db, FieldValue, auth};
+export { db, FieldValue};
