@@ -1,5 +1,17 @@
 # Instagram Clone Frontend
 
+## Table of contents
+
+- [Core packages](##core-packages)
+- [Features](##features)
+- [TESTING TOOLS](##testing-tools)
+- [UI](##ui)
+    -[LOGIN PAGE](###login-page)
+    -[SIGN UP](###sign-up)
+    -[DASHBOARD](###dashboard)
+    -[PROFILE](###profile)
+    -[FOLLOWED PROFILE](###followed-profile)
+
 
 Instagram clone using  React, Firebase.
 
@@ -30,7 +42,7 @@ This is the frontend of Instagram clone, built with React + Firebase. In this pr
 
 ## UI
 
-### LOGIN PAGE
+### LOGIN
 
 ![login!](./screenshorts/login.png)
 
