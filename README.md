@@ -32,19 +32,19 @@ This is the frontend of Instagram clone, built with React + Firebase. In this pr
 
 ### LOGIN PAGE
 
-[](./screenshorts/login.png)
+![login!](./screenshorts/login.png)
 
 ### SIGN UP
 
-[](./screenshorts/signUpinstagram.png)
+![signup!](./screenshorts/signUpinstagram.png)
 
 ### DASHBOARD 
 
-[](./screenshorts/instagram.png)
+![userDashboard!](./screenshorts/instagram.png)
 
 ### PROFILE
 
-[](./screenshorts/insprofile.png)
+![userprofile!](./screenshorts/insprofile.png)
 
 ### FOLLOWED PROFILE
 
