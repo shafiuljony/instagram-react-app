@@ -2,15 +2,15 @@
 
 ## Table of contents
 
-- [Core packages](##core-packages)
-- [Features](##features)
-- [TESTING TOOLS](##testing-tools)
-- [UI](##ui)
-    -[LOGIN PAGE](###login-page)
-    -[SIGN UP](###sign-up)
-    -[DASHBOARD](###dashboard)
-    -[PROFILE](###profile)
-    -[FOLLOWED PROFILE](###followed-profile)
+- [Core packages](#core-packages)
+- [Features](#features)
+- [TESTING TOOLS](#testing-tools)
+- [UI](#ui)
+    - [LOGIN PAGE](#login-page)
+    - [SIGN UP](#sign-up)
+    - [DASHBOARD](#dashboard)
+    - [PROFILE](#profile)
+    - [FOLLOWED PROFILE](#followed-profile)
 
 
 Instagram clone using  React, Firebase.
