@@ -48,4 +48,4 @@ This is the frontend of Instagram clone, built with React + Firebase. In this pr
 
 ### FOLLOWED PROFILE
 
-[followuser](./screenshorts/followedprofile.png)
+[followuser]('./screenshorts/followedprofile.png')
