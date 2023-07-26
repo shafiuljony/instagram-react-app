@@ -2,6 +2,7 @@
 
 ## Table of contents
 
+- [Overview](#overview)
 - [Core packages](#core-packages)
 - [Features](#features)
 - [TESTING TOOLS](#testing-tools)
@@ -12,6 +13,7 @@
     - [PROFILE](#profile)
     - [FOLLOWED PROFILE](#followed-profile)
 
+## Overview
 
 Instagram clone using  React, Firebase.
 
