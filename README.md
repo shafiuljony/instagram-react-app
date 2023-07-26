@@ -6,7 +6,7 @@
 - [Features](#features)
 - [TESTING TOOLS](#testing-tools)
 - [UI](#ui)
-    - [LOGIN PAGE](#login-page)
+    - [LOGIN PAGE](#login)
     - [SIGN UP](#sign-up)
     - [DASHBOARD](#dashboard)
     - [PROFILE](#profile)
