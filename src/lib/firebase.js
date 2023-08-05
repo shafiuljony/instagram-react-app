@@ -8,12 +8,12 @@ import 'firebase/compat/firestore';
 
 const config = {
     //my firebase config
-    apiKey: "AIzaSyASp6nj1ObRlB__K0h80pqplaDX3jmM2NQ",
-    authDomain: "instagram-react-app-9aea6.firebaseapp.com",
-    projectId: "instagram-react-app-9aea6",
-    storageBucket: "instagram-react-app-9aea6.appspot.com",
-    messagingSenderId: "42710354994",
-    appId: "1:42710354994:web:86c8cfdad1188a6bac002b"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
 };
 
 const firebaseApp = firebase.initializeApp(config);

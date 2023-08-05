@@ -57,3 +57,7 @@ Suggestions.propTypes = {
     loggedInUserDocId: PropTypes.string,
     following: PropTypes.array
 }
+
+// srcSet={[
+//     `/images/avatars/${username}.webp 280w`,
+// ]}
